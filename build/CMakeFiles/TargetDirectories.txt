@@ -1,0 +1,5 @@
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles/NodeBasedImageEditor.dir
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles/edit_cache.dir
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles/rebuild_cache.dir
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles/NodeBasedImageEditor_autogen_timestamp_deps.dir
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles/NodeBasedImageEditor_autogen.dir

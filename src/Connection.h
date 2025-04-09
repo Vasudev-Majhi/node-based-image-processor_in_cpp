@@ -1,16 +1,32 @@
-#pragma once
-#include <QGraphicsPathItem>
+#ifndef CONNECTION_H
+#define CONNECTION_H
 
-class Port;
+#include <QObject>
+#include <QGraphicsItem>
+#include <QLineF>
+#include "socket.h"
 
-class Connection : public QGraphicsPathItem {
+// class Socket;
+class Socket;
+class Node;
+
+class Connection : public QObject, public QGraphicsItem {
+    Q_OBJECT
 public:
-    Connection(Port* startPort, Port* endPort, QGraphicsItem* parent = nullptr);
-    void updatePath();
+    Connection(Socket* from, Socket* to, QGraphicsItem* parent = nullptr);
+    ~Connection();
 
-    Port* startPort;
-    Port* endPort;
+    Socket* fromSocket() const;
+    Socket* toSocket() const;
+
+    // QGraphicsItem interface
+    QRectF boundingRect() const override;
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
+    int type() const override;
 
 private:
-    QColor connectionColor = Qt::darkGray;
+    Socket* m_from;
+    Socket* m_to;
 };
+
+#endif // CONNECTION_H

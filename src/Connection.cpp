@@ -1,31 +1,45 @@
-#include "Connection.h"
-#include "Port.h"
+#include "connection.h"
+#include "socket.h"
 #include <QPainter>
+#include <QGraphicsScene>
 
-Connection::Connection(Port* start, Port* end, QGraphicsItem* parent)
-    : QGraphicsPathItem(parent), startPort(start), endPort(end) {
-    setPen(QPen(Qt::darkGray, 2));
-    setBrush(Qt::NoBrush);
-    setZValue(-1);
-    updatePath();
+Connection::Connection(Socket* from, Socket* to, QGraphicsItem* parent)
+    : QGraphicsItem(parent), m_from(from), m_to(to) {
 }
 
-void Connection::updatePath() {
-    QPainterPath path;
+Connection::~Connection() {
+}
+
+Socket* Connection::fromSocket() const {
+    return m_from;
+}
+
+Socket* Connection::toSocket() const {
+    return m_to;
+}
+
+QRectF Connection::boundingRect() const {
+    QPointF fromPos = m_from->pos() + m_from->parentItem()->pos();
+    QPointF toPos = m_to->pos() + m_to->parentItem()->pos();
+    QLineF line(fromPos, toPos);
+
+    qreal extra = 1.0;
+    return QRectF(line.p1(), QSizeF(line.p2().x() - line.p1().x(), line.p2().y() - line.p1().y()))
+        .normalized()
+        .adjusted(-extra, -extra, extra, extra);
     
-    if (startPort && endPort) {
-        QPointF startPos = startPort->scenePos();
-        QPointF endPos = endPort->scenePos();
-        
-        path.moveTo(startPos);
-        qreal dx = endPos.x() - startPos.x();
-        qreal dy = endPos.y() - startPos.y();
-        
-        QPointF ctr1(startPos.x() + dx * 0.25, startPos.y() + dy * 0.1);
-        QPointF ctr2(startPos.x() + dx * 0.75, startPos.y() + dy * 0.9);
-        
-        path.cubicTo(ctr1, ctr2, endPos);
-    }
-    
-    setPath(path);
+}
+
+void Connection::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
+    QPointF fromPos = m_from->pos() + m_from->parentItem()->pos();
+    QPointF toPos = m_to->pos() + m_to->parentItem()->pos();
+    QLineF line(fromPos, toPos);
+
+    QPen pen(Qt::black, 2);
+    painter->setPen(pen);
+
+    painter->drawLine(line);
+}
+int Connection::type() const {
+    return QGraphicsItem::UserType + 2; // 
 }

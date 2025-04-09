@@ -1,25 +1,31 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.10)
 project(NodeBasedImageEditor)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_AUTOMOC ON)
-
-find_package(Qt5 COMPONENTS Core Widgets OpenGL REQUIRED)
+set(CMAKE_AUTOMOC ON)  # Critical for Qt projects
 find_package(OpenCV REQUIRED)
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-add_executable(${PROJECT_NAME}
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable(NodeBasedImageEditor
     src/main.cpp
-    src/Node.cpp
-    src/Port.cpp
-    src/Connection.cpp
-    src/NodeGraphScene.cpp
-    src/ImageViewerNode.cpp
-    src/ImageLoaderNode.cpp
+    src/node.h
+    src/node.cpp
+    src/socket.h
+    src/socket.cpp
+    src/connection.h
+    src/connection.cpp
+    src/node_graph.h
+    src/node_graph.cpp
+    src/node_editor.h
+    src/node_editor.cpp
+    # src/test_node.h
+    # src/test_node.cpp
 )
 
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries(NodeBasedImageEditor
     Qt5::Core
     Qt5::Widgets
-    Qt5::OpenGL
     ${OpenCV_LIBS}
 )

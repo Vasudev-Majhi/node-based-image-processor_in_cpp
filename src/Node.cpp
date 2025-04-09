@@ -1,66 +1,39 @@
-#include "Node.h"
-#include "Port.h"
-#include "Connection.h"
+#include "node.h"
 #include <QPainter>
+#include <QGraphicsScene>
 
-Node::Node(QGraphicsItem* parent) 
-    : QObject(), QGraphicsItem(parent), nodeColor(Qt::darkGray) {
-    setFlag(QGraphicsItem::ItemIsMovable);
-    setFlag(QGraphicsItem::ItemSendsScenePositionChanges);
+Node::Node(const QString& name, QGraphicsItem* parent)
+    : QGraphicsItem(parent), m_name(name), m_color(Qt::lightGray) {
 }
 
 Node::~Node() {
-    for(Port* port : inputPorts) delete port;
-    for(Port* port : outputPorts) delete port;
+    qDeleteAll(m_sockets);
+}
+
+void Node::addSocket(Socket* socket) {
+    m_sockets.append(socket);
+}
+
+QList<Socket*> Node::sockets() const {
+    return m_sockets;
 }
 
 QRectF Node::boundingRect() const {
-    return QRectF(-width/2, -height/2, width, height);
+    return QRectF(-100, -30, 200, 60 + m_sockets.size() * 30);
 }
 
 void Node::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
-    painter->setBrush(nodeColor);
-    painter->drawRoundedRect(-width/2, -height/2, width, height, 5, 5);
-    painter->setBrush(Qt::darkGray);
-    painter->drawRoundedRect(-width/2, -height/2, width, 20, 5, 5);
-    
-    int y = -height/2 + 30;
-    for(Port* port : inputPorts) {
-        port->setPos(-width/2 - Port::DIAMETER/2, y);
-        y += 20;
-    }
-    
-    y = -height/2 + 30;
-    for(Port* port : outputPorts) {
-        port->setPos(width/2 + Port::DIAMETER/2, y);
-        y += 20;
+    painter->setBrush(m_color);
+    painter->drawRoundedRect(boundingRect().adjusted(5, 5, -5, -5), 10, 10);
+
+    painter->setPen(Qt::black);
+    painter->drawText(QRectF(-80, -25, 160, 30), Qt::AlignCenter, m_name);
+
+    for (Socket* socket : m_sockets) {
+        QPointF pos = socket->pos();
+        painter->drawEllipse(pos.x() - 5, pos.y() - 5, 10, 10);
     }
 }
-
-void Node::addInputPort(const QString& name) {
-    Port* port = new Port(this, Port::Input);
-    inputPorts.push_back(port);
-    if(scene()) scene()->addItem(port);
-}
-
-void Node::addOutputPort(const QString& name) {
-    Port* port = new Port(this, Port::Output);
-    outputPorts.push_back(port);
-    if(scene()) scene()->addItem(port);
-}
-
-QVariant Node::itemChange(GraphicsItemChange change, const QVariant &value) {
-    if (change == ItemPositionHasChanged) {
-        for(Port* port : inputPorts) {
-            for(Connection* conn : port->connections) {
-                conn->updatePath();
-            }
-        }
-        for(Port* port : outputPorts) {
-            for(Connection* conn : port->connections) {
-                conn->updatePath();
-            }
-        }
-    }
-    return QGraphicsItem::itemChange(change, value);
+int Node::type() const {
+    return QGraphicsItem::UserType + 3; 
 }

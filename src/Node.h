@@ -1,32 +1,36 @@
-#pragma once
-#include <QGraphicsItem>
-#include <QObject>
-#include <vector>
+#ifndef NODE_H
+#define NODE_H
 
-class Port;
-class Connection;
+#include <QObject>
+#include <QGraphicsItem>
+#include <QList>
+#include <QColor>
+#include <QString>
+#include <QPointF>
+#include "socket.h"
+#include <opencv2/opencv.hpp>
+
 
 class Node : public QObject, public QGraphicsItem {
     Q_OBJECT
 public:
-    Node(QGraphicsItem* parent = nullptr);
+    Node(const QString& name, QGraphicsItem* parent = nullptr);
     ~Node();
 
+    void addSocket(Socket* socket);
+    QList<Socket*> sockets() const;
+
+    // QGraphicsItem interface
     QRectF boundingRect() const override;
-    void paint(QPainter* painter, 
-               const QStyleOptionGraphicsItem* option,
-               QWidget* widget) override;
+    void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
 
-    void addInputPort(const QString& name);
-    void addOutputPort(const QString& name);
-    virtual cv::Mat processData(cv::Mat input) = 0;
-
-    std::vector<Port*> inputPorts;
-    std::vector<Port*> outputPorts;
+    virtual void process() = 0;
+    int type() const override;
 
 protected:
-    QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
-    QColor nodeColor;
-    int width = 120;
-    int height = 80;
+    QString m_name;
+    QList<Socket*> m_sockets;
+    QColor m_color;
 };
+
+#endif // NODE_H
