@@ -179,6 +179,54 @@ NodeBasedImageEditor_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NodeBasedImageEditor.dir/build.make CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilation.cpp.s
 .PHONY : NodeBasedImageEditor_autogen/mocs_compilation.cpp.s
 
+src/ImageInputNode.o: src/ImageInputNode.cpp.o
+.PHONY : src/ImageInputNode.o
+
+# target to build an object file
+src/ImageInputNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NodeBasedImageEditor.dir/build.make CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o
+.PHONY : src/ImageInputNode.cpp.o
+
+src/ImageInputNode.i: src/ImageInputNode.cpp.i
+.PHONY : src/ImageInputNode.i
+
+# target to preprocess a source file
+src/ImageInputNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NodeBasedImageEditor.dir/build.make CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.i
+.PHONY : src/ImageInputNode.cpp.i
+
+src/ImageInputNode.s: src/ImageInputNode.cpp.s
+.PHONY : src/ImageInputNode.s
+
+# target to generate assembly for a file
+src/ImageInputNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NodeBasedImageEditor.dir/build.make CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.s
+.PHONY : src/ImageInputNode.cpp.s
+
+src/ImageOutputNode.o: src/ImageOutputNode.cpp.o
+.PHONY : src/ImageOutputNode.o
+
+# target to build an object file
+src/ImageOutputNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NodeBasedImageEditor.dir/build.make CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o
+.PHONY : src/ImageOutputNode.cpp.o
+
+src/ImageOutputNode.i: src/ImageOutputNode.cpp.i
+.PHONY : src/ImageOutputNode.i
+
+# target to preprocess a source file
+src/ImageOutputNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NodeBasedImageEditor.dir/build.make CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.i
+.PHONY : src/ImageOutputNode.cpp.i
+
+src/ImageOutputNode.s: src/ImageOutputNode.cpp.s
+.PHONY : src/ImageOutputNode.s
+
+# target to generate assembly for a file
+src/ImageOutputNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NodeBasedImageEditor.dir/build.make CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.s
+.PHONY : src/ImageOutputNode.cpp.s
+
 src/connection.o: src/connection.cpp.o
 .PHONY : src/connection.o
 
@@ -337,6 +385,12 @@ help:
 	@echo "... NodeBasedImageEditor_autogen/mocs_compilation.o"
 	@echo "... NodeBasedImageEditor_autogen/mocs_compilation.i"
 	@echo "... NodeBasedImageEditor_autogen/mocs_compilation.s"
+	@echo "... src/ImageInputNode.o"
+	@echo "... src/ImageInputNode.i"
+	@echo "... src/ImageInputNode.s"
+	@echo "... src/ImageOutputNode.o"
+	@echo "... src/ImageOutputNode.i"
+	@echo "... src/ImageOutputNode.s"
 	@echo "... src/connection.o"
 	@echo "... src/connection.i"
 	@echo "... src/connection.s"

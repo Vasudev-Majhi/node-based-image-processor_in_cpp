@@ -1,6 +1,6 @@
 CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilation.cpp.o: \
   /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/mocs_compilation.cpp \
-  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/moc_connection.cpp \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/moc_ImageInputNode.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/memory \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/copy.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/unwrap_iter.h \
@@ -444,7 +444,8 @@ CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilatio
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__iterator/wrap_iter.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cassert \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/assert.h \
-  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/connection.h \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/ImageInputNode.h \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/node.h \
   /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QObject \
   /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qobject.h \
   /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qobjectdefs.h \
@@ -781,14 +782,11 @@ CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilatio
   /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qsharedpointer_impl.h \
   /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qimage.h \
   /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qpixelformat.h \
-  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QLineF \
-  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/socket.h \
-  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/moc_node.cpp \
-  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/node.h \
   /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QList \
   /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/QColor \
   /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QString \
   /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QPointF \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/socket.h \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/opencv.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/opencv_modules.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/core.hpp \
@@ -960,25 +958,52 @@ CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilatio
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/video.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/video/tracking.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/video/background_segm.hpp \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/QFileDialog \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qfiledialog.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qdir.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qfileinfo.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qfile.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qfiledevice.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qurl.h \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qdialog.h \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qwidget.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qpalette.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qbrush.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qfont.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qfontmetrics.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qfontinfo.h \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qsizepolicy.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qcursor.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qkeysequence.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QFileInfo \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/QGraphicsSceneContextMenuEvent \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qgraphicssceneevent.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qcoreevent.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/qset.h \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/QMenu \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qmenu.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qicon.h \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qaction.h \
+  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qactiongroup.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/QPainter \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qpainter.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qtextoption.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qpen.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QMetaType \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/moc_ImageOutputNode.cpp \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/ImageOutputNode.h \
+  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/QImage \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/moc_connection.cpp \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/connection.h \
+  /opt/homebrew/opt/qt@5/lib/QtCore.framework/Headers/QLineF \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/moc_node.cpp \
   /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/moc_node_editor.cpp \
   /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/node_editor.h \
   /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/QGraphicsView \
   /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qpainter.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qtextoption.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qpen.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qbrush.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qfontinfo.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qfont.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qfontmetrics.h \
   /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qscrollarea.h \
   /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qabstractscrollarea.h \
   /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qframe.h \
-  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qwidget.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qpalette.h \
-  /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qsizepolicy.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qcursor.h \
-  /opt/homebrew/opt/qt@5/lib/QtGui.framework/Headers/qkeysequence.h \
   /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
   /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/Headers/QGraphicsScene \
   /Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/UVLADIE3JM/../../../src/node_graph.h \

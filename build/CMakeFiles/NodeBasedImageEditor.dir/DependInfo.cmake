@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "" "NodeBasedImageEditor_autogen/timestamp" "custom" "NodeBasedImageEditor_autogen/deps"
   "/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/NodeBasedImageEditor_autogen/mocs_compilation.cpp" "CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilation.cpp.o.d"
+  "/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp" "CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o" "gcc" "CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o.d"
+  "/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp" "CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o" "gcc" "CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o.d"
   "/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/connection.cpp" "CMakeFiles/NodeBasedImageEditor.dir/src/connection.cpp.o" "gcc" "CMakeFiles/NodeBasedImageEditor.dir/src/connection.cpp.o.d"
   "/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/main.cpp" "CMakeFiles/NodeBasedImageEditor.dir/src/main.cpp.o" "gcc" "CMakeFiles/NodeBasedImageEditor.dir/src/main.cpp.o.d"
   "/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/node.cpp" "CMakeFiles/NodeBasedImageEditor.dir/src/node.cpp.o" "gcc" "CMakeFiles/NodeBasedImageEditor.dir/src/node.cpp.o.d"

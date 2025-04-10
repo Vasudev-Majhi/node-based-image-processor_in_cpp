@@ -22,6 +22,11 @@ add_executable(NodeBasedImageEditor
     src/node_editor.cpp
     # src/test_node.h
     # src/test_node.cpp
+    src/ImageInputNode.h 
+    src/ImageOutputNode.h 
+    src/ImageInputNode.cpp 
+    src/ImageOutputNode.cpp
+
 )
 
 target_link_libraries(NodeBasedImageEditor

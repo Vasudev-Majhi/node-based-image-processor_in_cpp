@@ -701,6 +701,10 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
   CMakeFiles/3.31.6/CMakeCXXCompiler.cmake \
   CMakeFiles/3.31.6/CMakeSystem.cmake \
   NodeBasedImageEditor_autogen/moc_predefs.h \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.h \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp \
+  /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.h \
   /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/connection.cpp \
   /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/connection.h \
   /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/main.cpp \
@@ -821,8 +825,10 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/video/background_segm.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/video/tracking.hpp \
   /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/videoio.hpp \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QFileInfo \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QLineF \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QList \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QMetaType \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QObject \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QPointF \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QString \
@@ -837,7 +843,12 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qconfig.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qcontainerfwd.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qcontainertools_impl.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qdatastream.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qdir.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qfile.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qfiledevice.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qfileinfo.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qflags.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qglobal.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qglobalstatic.h \
@@ -865,6 +876,7 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qrefcount.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qregexp.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qscopedpointer.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qset.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qshareddata.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qsharedpointer.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qsharedpointer_impl.h \
@@ -879,17 +891,21 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qsystemdetection.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qtcore-config.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qtypeinfo.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qurl.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qvariant.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qvarlengtharray.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qvector.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qversiontagging.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/QColor \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/QImage \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/QPainter \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qbrush.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qcolor.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qcursor.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qfont.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qfontinfo.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qfontmetrics.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qicon.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qimage.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qkeysequence.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qmatrix.h \
@@ -909,14 +925,23 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qtguiglobal.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qtransform.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qwindowdefs.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QFileDialog \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsItem \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsScene \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsSceneContextMenuEvent \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsView \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QMenu \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qabstractscrollarea.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qaction.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qactiongroup.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qfiledialog.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qframe.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsitem.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsscene.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicssceneevent.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsview.h \
+  /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qmenu.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qscrollarea.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qsizepolicy.h \
   /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qtwidgets-config.h \
@@ -1137,8 +1162,6 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/share/cmake/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake:
 
-/opt/homebrew/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake:
-
 /opt/homebrew/share/cmake/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake:
 
 /opt/homebrew/share/cmake/Modules/Compiler/CrayClang-DetermineCompiler.cmake:
@@ -1249,13 +1272,23 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsview.h:
 
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicssceneevent.h:
+
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsscene.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qgraphicsitem.h:
 
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qfiledialog.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qaction.h:
+
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qabstractscrollarea.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsItem:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QFileDialog:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qwindowdefs.h:
 
@@ -1275,6 +1308,8 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qpalette.h:
 
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QGraphicsSceneContextMenuEvent:
+
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qpainterpath.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qpaintdevice.h:
@@ -1282,6 +1317,8 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qmatrix.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qimage.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qicon.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qfontmetrics.h:
 
@@ -1295,6 +1332,8 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/qbrush.h:
 
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/QImage:
+
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/QColor:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qversiontagging.h:
@@ -1304,6 +1343,8 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qvarlengtharray.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qvariant.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qurl.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qtcore-config.h:
 
@@ -1326,6 +1367,8 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qsharedpointer_impl.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qshareddata.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qset.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qrefcount.h:
 
@@ -1365,6 +1408,14 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qflags.h:
 
+/opt/homebrew/share/cmake/Modules/Compiler/GNU-C-DetermineCompiler.cmake:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qfile.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qdir.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qcoreevent.h:
+
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qcontainerfwd.h:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qconfig.h:
@@ -1386,6 +1437,8 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QObject:
 
 /opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QLineF:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QFileInfo:
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/video/tracking.hpp:
 
@@ -1425,6 +1478,8 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/objdetect/charuco_detector.hpp:
 
+/opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/objdetect/barcode.hpp:
+
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/objdetect/aruco_board.hpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/fill_n.h:
@@ -1453,12 +1508,6 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/flann/heap.h:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__locale:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cfloat:
-
-/opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/flann/general.h:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_pthread/_pthread_once_t.h:
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/flann/flann_base.hpp:
@@ -1469,9 +1518,9 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/stitching/detail/blenders.hpp:
 
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/types.h:
-
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/objdetect/aruco_dictionary.hpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/arm/types.h:
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/flann/any.h:
 
@@ -1527,8 +1576,6 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/core/cvdef.h:
 
-/opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/core/cuda.inl.hpp:
-
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/partial_sort_copy.h:
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/core/check.hpp:
@@ -1550,6 +1597,20 @@ NodeBasedImageEditor_autogen/timestamp: /Library/Developer/CommandLineTools/SDKs
 /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/node.h:
 
 /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/main.cpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__locale:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cfloat:
+
+/opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/flann/general.h:
+
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.h:
+
+/opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/core/cuda.inl.hpp:
+
+/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cwctype:
+
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp:
 
 CMakeFiles/3.31.6/CMakeCXXCompiler.cmake:
 
@@ -1598,8 +1659,6 @@ CMakeFiles/3.31.6/CMakeCCompiler.cmake:
 /opt/homebrew/share/cmake/Modules/Compiler/Fujitsu-DetermineCompiler.cmake:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_nlink_t.h:
-
-/opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/objdetect/barcode.hpp:
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/dnn/layer.hpp:
 
@@ -1679,6 +1738,8 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/vector:
 
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qactiongroup.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_ino64_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/utility:
@@ -1750,8 +1811,6 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/ios:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/float.h:
-
-/Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/cwctype:
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/highgui.hpp:
 
@@ -1832,6 +1891,8 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/forward.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/declval.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qfiledevice.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__utility/cmp.h:
 
@@ -1975,6 +2036,8 @@ CMakeFiles/3.31.6/CMakeSystem.cmake:
 
 /opt/homebrew/opt/qt@5/lib/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake:
 
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/QMenu:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/is_destructible.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_size_t.h:
@@ -2070,6 +2133,8 @@ NodeBasedImageEditor_autogen/moc_predefs.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/add_volatile.h:
 
 /opt/homebrew/Cellar/opencv/4.11.0_1/include/opencv4/opencv2/core/fast_math.hpp:
+
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/bitset:
 
@@ -2186,6 +2251,8 @@ NodeBasedImageEditor_autogen/moc_predefs.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__memory/shared_ptr.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__type_traits/copy_cvref.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtGui.framework/Versions/5/Headers/QPainter:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/remove_copy.h:
 
@@ -2323,6 +2390,8 @@ NodeBasedImageEditor_autogen/moc_predefs.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__iterator/distance.h:
 
+/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/_locale.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__concepts/different_from.h:
@@ -2388,6 +2457,8 @@ NodeBasedImageEditor_autogen/moc_predefs.h:
 /opt/homebrew/share/cmake/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake:
 
 /opt/homebrew/share/cmake/Modules/Compiler/PathScale-DetermineCompiler.cmake:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtWidgets.framework/Versions/5/Headers/qmenu.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__functional/mem_fn.h:
 
@@ -2472,6 +2543,8 @@ NodeBasedImageEditor_autogen/moc_predefs.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__compare/strong_order.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__compare/partial_order.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/qfileinfo.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__compare/is_eq.h:
 
@@ -3116,6 +3189,8 @@ NodeBasedImageEditor_autogen/moc_predefs.h:
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_int16_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/sys/_types/_id_t.h:
+
+/opt/homebrew/Cellar/qt@5/5.15.16_1/lib/QtCore.framework/Versions/5/Headers/QMetaType:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__algorithm/none_of.h:
 

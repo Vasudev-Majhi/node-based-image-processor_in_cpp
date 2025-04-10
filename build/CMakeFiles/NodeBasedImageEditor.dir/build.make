@@ -176,6 +176,34 @@ CMakeFiles/NodeBasedImageEditor.dir/src/node_editor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NodeBasedImageEditor.dir/src/node_editor.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/node_editor.cpp -o CMakeFiles/NodeBasedImageEditor.dir/src/node_editor.cpp.s
 
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o: CMakeFiles/NodeBasedImageEditor.dir/flags.make
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o: /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o: CMakeFiles/NodeBasedImageEditor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o -MF CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o.d -o CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o -c /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp
+
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp > CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.i
+
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp -o CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.s
+
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o: CMakeFiles/NodeBasedImageEditor.dir/flags.make
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o: /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o: CMakeFiles/NodeBasedImageEditor.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o -MF CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o.d -o CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o -c /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp
+
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp > CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.i
+
+CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp -o CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.s
+
 # Object files for target NodeBasedImageEditor
 NodeBasedImageEditor_OBJECTS = \
 "CMakeFiles/NodeBasedImageEditor.dir/NodeBasedImageEditor_autogen/mocs_compilation.cpp.o" \
@@ -184,7 +212,9 @@ NodeBasedImageEditor_OBJECTS = \
 "CMakeFiles/NodeBasedImageEditor.dir/src/socket.cpp.o" \
 "CMakeFiles/NodeBasedImageEditor.dir/src/connection.cpp.o" \
 "CMakeFiles/NodeBasedImageEditor.dir/src/node_graph.cpp.o" \
-"CMakeFiles/NodeBasedImageEditor.dir/src/node_editor.cpp.o"
+"CMakeFiles/NodeBasedImageEditor.dir/src/node_editor.cpp.o" \
+"CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o" \
+"CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o"
 
 # External object files for target NodeBasedImageEditor
 NodeBasedImageEditor_EXTERNAL_OBJECTS =
@@ -196,6 +226,8 @@ NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/src/socket.cpp.o
 NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/src/connection.cpp.o
 NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/src/node_graph.cpp.o
 NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/src/node_editor.cpp.o
+NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/src/ImageInputNode.cpp.o
+NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/src/ImageOutputNode.cpp.o
 NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/build.make
 NodeBasedImageEditor: /opt/homebrew/opt/qt@5/lib/QtWidgets.framework/QtWidgets
 NodeBasedImageEditor: /opt/homebrew/lib/libopencv_gapi.4.11.0.dylib
@@ -257,7 +289,7 @@ NodeBasedImageEditor: /opt/homebrew/lib/libopencv_photo.4.11.0.dylib
 NodeBasedImageEditor: /opt/homebrew/lib/libopencv_imgproc.4.11.0.dylib
 NodeBasedImageEditor: /opt/homebrew/lib/libopencv_core.4.11.0.dylib
 NodeBasedImageEditor: CMakeFiles/NodeBasedImageEditor.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable NodeBasedImageEditor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable NodeBasedImageEditor"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NodeBasedImageEditor.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

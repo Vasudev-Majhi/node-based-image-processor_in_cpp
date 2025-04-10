@@ -316,6 +316,18 @@
 	"HEADERS" : 
 	[
 		[
+			"/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.h",
+			"Mu",
+			"UVLADIE3JM/moc_ImageInputNode.cpp",
+			null
+		],
+		[
+			"/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.h",
+			"Mu",
+			"UVLADIE3JM/moc_ImageOutputNode.cpp",
+			null
+		],
+		[
 			"/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/connection.h",
 			"Mu",
 			"UVLADIE3JM/moc_connection.cpp",
@@ -398,6 +410,16 @@
 	"SETTINGS_FILE" : "/Users/vasudevmajhi/Desktop/AZProject/Mixar/build/CMakeFiles/NodeBasedImageEditor_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageInputNode.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/ImageOutputNode.cpp",
+			"Mu",
+			null
+		],
 		[
 			"/Users/vasudevmajhi/Desktop/AZProject/Mixar/src/connection.cpp",
 			"Mu",

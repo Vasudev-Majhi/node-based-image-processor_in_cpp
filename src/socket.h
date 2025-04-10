@@ -26,7 +26,14 @@ public:
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) override;
     int type() const override;
 
+    void setSocketData(const QVariant& d) 
+    { m_data = d; }
+
+    QVariant socketData() const
+    { return m_data; }
+
 private:
+    QVariant m_data;
     SocketType m_type;
     Node* m_node;
 };

@@ -49,60 +49,117 @@
 //     return app.exec();
 // }
 
+// #include <QApplication>
+// #include "node_editor.h"
+// #include "node.h"
+// #include "socket.h"
+// #include <QDebug>
+
+// class TestNode : public Node {
+// public:
+//     TestNode(const QString& name) : Node(name) {
+//         // Input socket on the left
+//         Socket* input = new Socket(INPUT, this);
+//         input->setPos(-90, 0); // Position within node's bounding rect
+//         addSocket(input);
+
+//         // Output socket on the right
+//         Socket* output = new Socket(OUTPUT, this);
+//         output->setPos(90, 0);
+//         addSocket(output);
+//     }
+
+//     void process() override {
+//         qDebug() << "Processing" << m_name;
+//         // Add actual processing logic here
+//     }
+// };
+
+// int main(int argc, char** argv) {
+//     QApplication app(argc, argv);
+
+//     NodeEditor editor;
+//     editor.setWindowTitle("Node-Based Image Editor");
+//     editor.resize(800, 600);
+
+//     // Create and position nodes
+//     TestNode* node1 = new TestNode("Node 1");
+//     node1->setPos(-200, 0);
+
+//     TestNode* node2 = new TestNode("Node 2");
+//     node2->setPos(200, 0);
+
+//     // Add nodes to the editor
+//     editor.addNode(node1);
+//     editor.addNode(node2);
+
+//     // Create connection between node1's output and node2's input
+//     Socket* fromSocket = node1->sockets().at(1); // Output socket
+//     Socket* toSocket = node2->sockets().at(0);   // Input socket
+
+//     Connection* connection = new Connection(fromSocket, toSocket);
+//     editor.addConnection(connection);
+
+//     // Optional: Adjust the view to fit the scene
+//     editor.fitInView(editor.scene()->sceneRect(), Qt::KeepAspectRatio);
+
+//     editor.show();
+//     return app.exec();
+// }
+
+// main.cpp
 #include <QApplication>
+#include <QTimer>
 #include "node_editor.h"
-#include "node.h"
 #include "socket.h"
-#include <QDebug>
+#include "connection.h"
 
-class TestNode : public Node {
-public:
-    TestNode(const QString& name) : Node(name) {
-        // Input socket on the left
-        Socket* input = new Socket(INPUT, this);
-        input->setPos(-90, 0); // Position within node's bounding rect
-        addSocket(input);
+// 1) Include your new nodes
+#include "ImageInputNode.h"
+#include "ImageOutputNode.h"     
 
-        // Output socket on the right
-        Socket* output = new Socket(OUTPUT, this);
-        output->setPos(90, 0);
-        addSocket(output);
-    }
-
-    void process() override {
-        qDebug() << "Processing" << m_name;
-        // Add actual processing logic here
-    }
-};
+#include <opencv2/opencv.hpp>
+#include <QMetaType>
+// #include "MetaTypes.h"
+Q_DECLARE_METATYPE(cv::Mat)
 
 int main(int argc, char** argv) {
+     // 2) Allow cv::Mat in QVariant
+    qRegisterMetaType<cv::Mat>("cv::Mat");
     QApplication app(argc, argv);
 
+   
+  
+
+    // 3) Create the editor
     NodeEditor editor;
-    editor.setWindowTitle("Node-Based Image Editor");
+    editor.setWindowTitle("Node‑Based Image Editor");
     editor.resize(800, 600);
 
-    // Create and position nodes
-    TestNode* node1 = new TestNode("Node 1");
-    node1->setPos(-200, 0);
+    // 4) Instantiate an ImageInputNode
+    ImageInputNode* inputNode = new ImageInputNode("Load Image");
+    inputNode->setPos(-200, 0);
+    editor.addNode(inputNode);
 
-    TestNode* node2 = new TestNode("Node 2");
-    node2->setPos(200, 0);
+    // 5) (Optional) Instantiate an OutputNode and connect it
+    OutputNode* outputNode = new OutputNode("Save/Preview");
+    outputNode->setPos(200, 0);
+    editor.addNode(outputNode);
 
-    // Add nodes to the editor
-    editor.addNode(node1);
-    editor.addNode(node2);
+    Socket* outSock = inputNode->sockets().at(0);  // OUTPUT socket
+    Socket* inSock  = outputNode->sockets().at(0); // INPUT socket
+    Connection* conn = new Connection(outSock, inSock);
+    editor.addConnection(conn);
 
-    // Create connection between node1's output and node2's input
-    Socket* fromSocket = node1->sockets().at(1); // Output socket
-    Socket* toSocket = node2->sockets().at(0);   // Input socket
-
-    Connection* connection = new Connection(fromSocket, toSocket);
-    editor.addConnection(connection);
-
-    // Optional: Adjust the view to fit the scene
+    // 6) Fit view
     editor.fitInView(editor.scene()->sceneRect(), Qt::KeepAspectRatio);
-
     editor.show();
+
+    // 7) Delay a tiny bit then trigger the file‑open dialog
+    //    (so that the editor window is visible first)
+    QTimer::singleShot(200, [inputNode]() {
+        inputNode->loadImage();
+    });
+
     return app.exec();
 }
