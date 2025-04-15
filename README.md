@@ -80,6 +80,9 @@ mkdir build && cd build
 cmake ..
 make
 
+```bash
+cd bin
+
 ### Run the application
 ./resizable_images
 
