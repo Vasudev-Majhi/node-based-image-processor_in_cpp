@@ -1,6 +1,6 @@
 # Node-Based Image Editor
-![Alt text](examples/Images/Screenshot 2025-04-15 at 3.53.11 PM.png)
-![Alt text](examples/Images/Screenshot 2025-04-15 at 8.19.34 PM.png)
+![Alt text](Images/Screenshot 2025-04-15 at 3.53.11 PM.png)
+![Alt text]Images/Screenshot 2025-04-15 at 8.19.34 PM.png)
 
 ## ✨ Features
 
