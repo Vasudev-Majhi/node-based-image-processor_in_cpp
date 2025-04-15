@@ -1,0 +1,508 @@
+#include "NodeGraphicsObject.hpp"
+
+#include <cstdlib>
+#include <iostream>
+
+#include <QtWidgets/QGraphicsEffect>
+#include <QtWidgets/QtWidgets>
+
+#include "AbstractGraphModel.hpp"
+#include "AbstractNodeGeometry.hpp"
+#include "AbstractNodePainter.hpp"
+#include "BasicGraphicsScene.hpp"
+#include "ConnectionGraphicsObject.hpp"
+#include "ConnectionIdUtils.hpp"
+#include "NodeConnectionInteraction.hpp"
+#include "StyleCollection.hpp"
+#include "UndoCommands.hpp"
+
+namespace QtNodes {
+
+NodeGraphicsObject::NodeGraphicsObject(BasicGraphicsScene &scene, NodeId nodeId)
+    : _nodeId(nodeId)
+    , _graphModel(scene.graphModel())
+    , _nodeState(*this)
+    , _proxyWidget(nullptr)
+{
+    scene.addItem(this);
+
+    setFlag(QGraphicsItem::ItemDoesntPropagateOpacityToChildren, true);
+    setFlag(QGraphicsItem::ItemIsFocusable, true);
+
+    setLockedState();
+
+    setCacheMode(QGraphicsItem::DeviceCoordinateCache);
+
+    QJsonObject nodeStyleJson = _graphModel.nodeData(_nodeId, NodeRole::Style).toJsonObject();
+
+    NodeStyle nodeStyle(nodeStyleJson);
+
+    {
+        auto effect = new QGraphicsDropShadowEffect;
+        effect->setOffset(4, 4);
+        effect->setBlurRadius(20);
+        effect->setColor(nodeStyle.ShadowColor);
+
+        setGraphicsEffect(effect);
+    }
+
+    setOpacity(nodeStyle.Opacity);
+
+    setAcceptHoverEvents(true);
+
+    setZValue(0);
+
+    embedQWidget();
+
+    nodeScene()->nodeGeometry().recomputeSize(_nodeId);
+
+    QPointF const pos = _graphModel.nodeData<QPointF>(_nodeId, NodeRole::Position);
+
+    setPos(pos);
+
+    connect(&_graphModel, &AbstractGraphModel::nodeFlagsUpdated, [this](NodeId const nodeId) {
+        if (_nodeId == nodeId)
+            setLockedState();
+    });
+}
+
+AbstractGraphModel &NodeGraphicsObject::graphModel() const
+{
+    return _graphModel;
+}
+
+BasicGraphicsScene *NodeGraphicsObject::nodeScene() const
+{
+    return dynamic_cast<BasicGraphicsScene *>(scene());
+}
+
+void NodeGraphicsObject::updateQWidgetEmbedPos()
+{
+  if (_proxyWidget) {
+    AbstractNodeGeometry &geometry = nodeScene()->nodeGeometry();
+    _proxyWidget->setPos(geometry.widgetPosition(_nodeId));
+  }
+}
+
+void NodeGraphicsObject::embedQWidget()
+{
+    AbstractNodeGeometry &geometry = nodeScene()->nodeGeometry();
+    geometry.recomputeSize(_nodeId);
+
+    if (auto w = _graphModel.nodeData(_nodeId, NodeRole::Widget).value<QWidget *>()) {
+        _proxyWidget = new QGraphicsProxyWidget(this);
+
+        _proxyWidget->setWidget(w);
+
+        _proxyWidget->setPreferredWidth(5);
+
+        geometry.recomputeSize(_nodeId);
+
+        if (w->sizePolicy().verticalPolicy() & QSizePolicy::ExpandFlag) {
+            unsigned int widgetHeight = geometry.size(_nodeId).height()
+                                        - geometry.captionRect(_nodeId).height();
+
+            // If the widget wants to use as much vertical space as possible, set
+            // it to have the geom's equivalentWidgetHeight.
+            _proxyWidget->setMinimumHeight(widgetHeight);
+        }
+
+        updateQWidgetEmbedPos();
+
+        //update();
+
+        _proxyWidget->setOpacity(1.0);
+        _proxyWidget->setFlag(QGraphicsItem::ItemIgnoresParentOpacity);
+    }
+}
+
+void NodeGraphicsObject::setLockedState()
+{
+    NodeFlags flags = _graphModel.nodeFlags(_nodeId);
+
+    bool const locked = flags.testFlag(NodeFlag::Locked);
+
+    setFlag(QGraphicsItem::ItemIsMovable, !locked);
+    setFlag(QGraphicsItem::ItemIsSelectable, !locked);
+    setFlag(QGraphicsItem::ItemSendsScenePositionChanges, !locked);
+}
+
+QRectF NodeGraphicsObject::boundingRect() const
+{
+    AbstractNodeGeometry &geometry = nodeScene()->nodeGeometry();
+    return geometry.boundingRect(_nodeId);
+    //return NodeGeometry(_nodeId, _graphModel, nodeScene()).boundingRect();
+}
+
+void NodeGraphicsObject::setGeometryChanged()
+{
+    prepareGeometryChange();
+}
+
+void NodeGraphicsObject::moveConnections() const
+{
+    auto const &connected = _graphModel.allConnectionIds(_nodeId);
+
+    for (auto &cnId : connected) {
+        auto cgo = nodeScene()->connectionGraphicsObject(cnId);
+
+        if (cgo)
+            cgo->move();
+    }
+}
+
+void NodeGraphicsObject::reactToConnection(ConnectionGraphicsObject const *cgo)
+{
+    _nodeState.storeConnectionForReaction(cgo);
+
+    update();
+}
+
+// void NodeGraphicsObject::paint(QPainter *painter, QStyleOptionGraphicsItem const *option, QWidget *)
+// {
+//     painter->setClipRect(option->exposedRect);
+
+//     nodeScene()->nodePainter().paint(painter, *this);
+// }
+// #include "cvMatToQImage.h" // Helper function to convert cv::Mat to QImage
+
+void NodeGraphicsObject::paint(QPainter *painter,
+                               const QStyleOptionGraphicsItem *option,
+                               QWidget *)
+{
+    // Call base class paint to draw the node background
+    painter->setClipRect(option->exposedRect);
+    nodeScene()->nodePainter().paint(painter, *this);
+
+    // Check if the node has an associated image
+    auto imageData = _graphModel.nodeData(_nodeId, NodeRole::InternalData);
+    if (!imageData.isNull()) {
+        QJsonObject internalDataJson = imageData.toJsonObject();
+        QByteArray imageDataBytes = QByteArray::fromBase64(internalDataJson["image-data"].toString().toUtf8());
+        QImage qimg;
+        qimg.loadFromData(imageDataBytes);
+
+        if (!qimg.isNull()) {
+            // Scale the image to fit as a thumbnail
+            QImage thumb = qimg.scaled(80, 80, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+
+            // Get node bounding rectangle
+            QRectF br = boundingRect();
+            int w = static_cast<int>(br.width());
+            int h = static_cast<int>(br.height());
+
+            // Position thumbnail
+            QRect thumbRect(-w / 2 + 10, -h / 2 + 10, thumb.width(), thumb.height());
+            painter->drawImage(thumbRect, thumb);
+
+            // Draw metadata (dimensions, file size, format)
+            QString meta = QString("%1×%2%3 KB")
+                               .arg(qimg.width())
+                               .arg(qimg.height())
+                               .arg(imageDataBytes.size() / 1024);
+            QRect textRect = thumbRect.translated(thumb.width() + 10, 0);
+            painter->setPen(Qt::black);
+            painter->drawText(textRect, Qt::AlignLeft | Qt::AlignTop, meta);
+        }
+    }
+}
+
+QVariant NodeGraphicsObject::itemChange(GraphicsItemChange change, const QVariant &value)
+{
+    if (change == ItemScenePositionHasChanged && scene()) {
+        moveConnections();
+    }
+
+    return QGraphicsObject::itemChange(change, value);
+}
+
+// void NodeGraphicsObject::mousePressEvent(QGraphicsSceneMouseEvent *event)
+// {
+//     //if (_nodeState.locked())
+//     //return;
+
+//     AbstractNodeGeometry &geometry = nodeScene()->nodeGeometry();
+
+//     for (PortType portToCheck : {PortType::In, PortType::Out}) {
+//         QPointF nodeCoord = sceneTransform().inverted().map(event->scenePos());
+
+//         PortIndex const portIndex = geometry.checkPortHit(_nodeId, portToCheck, nodeCoord);
+
+//         if (portIndex == InvalidPortIndex)
+//             continue;
+
+//         auto const &connected = _graphModel.connections(_nodeId, portToCheck, portIndex);
+
+//         // Start dragging existing connection.
+//         if (!connected.empty() && portToCheck == PortType::In) {
+//             auto const &cnId = *connected.begin();
+
+//             // Need ConnectionGraphicsObject
+
+//             NodeConnectionInteraction interaction(*this,
+//                                                   *nodeScene()->connectionGraphicsObject(cnId),
+//                                                   *nodeScene());
+
+//             if (_graphModel.detachPossible(cnId))
+//                 interaction.disconnect(portToCheck);
+//         } else // initialize new Connection
+//         {
+//             if (portToCheck == PortType::Out) {
+//                 auto const outPolicy = _graphModel
+//                                            .portData(_nodeId,
+//                                                      portToCheck,
+//                                                      portIndex,
+//                                                      PortRole::ConnectionPolicyRole)
+//                                            .value<ConnectionPolicy>();
+
+//                 if (!connected.empty() && outPolicy == ConnectionPolicy::One) {
+//                     for (auto &cnId : connected) {
+//                         _graphModel.deleteConnection(cnId);
+//                     }
+//                 }
+//             } // if port == out
+
+//             ConnectionId const incompleteConnectionId = makeIncompleteConnectionId(_nodeId,
+//                                                                                    portToCheck,
+//                                                                                    portIndex);
+
+//             nodeScene()->makeDraftConnection(incompleteConnectionId);
+//         }
+//     }
+
+//     if (_graphModel.nodeFlags(_nodeId) & NodeFlag::Resizable) {
+//         auto pos = event->pos();
+//         bool const hit = geometry.resizeHandleRect(_nodeId).contains(QPoint(pos.x(), pos.y()));
+//         _nodeState.setResizing(hit);
+//     }
+
+//     QGraphicsObject::mousePressEvent(event);
+
+//     if (isSelected()) {
+//         Q_EMIT nodeScene()->nodeSelected(_nodeId);
+//     }
+// }
+void NodeGraphicsObject::mousePressEvent(QGraphicsSceneMouseEvent *event)
+{
+    //if (_nodeState.locked())
+    //return;
+
+    AbstractNodeGeometry &geometry = nodeScene()->nodeGeometry();
+
+    // Track if a port was clicked
+    // bool portClicked = false;
+    for (PortType portType : {PortType::In, PortType::Out}) {
+        QPointF nodeCoord = sceneTransform().inverted().map(event->scenePos());
+
+        PortIndex const portIndex = geometry.checkPortHit(_nodeId, portType, nodeCoord);
+
+        if (portIndex == InvalidPortIndex)
+            continue;
+
+        // portClicked = true;
+
+        auto const &connected = _graphModel.connections(_nodeId, portType, portIndex);
+
+        // Start dragging existing connection.
+        if (!connected.empty() && portType == PortType::In) {
+            auto const &cnId = *connected.begin();
+
+            // Need ConnectionGraphicsObject
+            NodeConnectionInteraction interaction(*this,
+                                                  *nodeScene()->connectionGraphicsObject(cnId),
+                                                  *nodeScene());
+
+            if (_graphModel.detachPossible(cnId))
+                interaction.disconnect(portType);
+        } else // initialize new Connection
+        {
+            if (portType == PortType::Out) {
+                auto const outPolicy = _graphModel
+                                           .portData(_nodeId,
+                                                     portType,
+                                                     portIndex,
+                                                     PortRole::ConnectionPolicyRole)
+                                           .value<ConnectionPolicy>();
+
+                if (!connected.empty() && outPolicy == ConnectionPolicy::One) {
+                    for (auto &cnId : connected) {
+                        _graphModel.deleteConnection(cnId);
+                    }
+                }
+            } // if port == out
+
+            ConnectionId const incompleteConnectionId = makeIncompleteConnectionId(_nodeId,
+                                                                                   portType,
+                                                                                   portIndex);
+
+            nodeScene()->makeDraftConnection(incompleteConnectionId);
+        }
+    }
+
+    // Check if the click is on the resize handle
+    bool resizing = false;
+    if (_graphModel.nodeFlags(_nodeId) & NodeFlag::Resizable) {
+        auto pos = event->pos();
+        resizing = geometry.resizeHandleRect(_nodeId).contains(QPoint(pos.x(), pos.y()));
+        _nodeState.setResizing(resizing);
+    }
+
+    // // Emit signal for body click if neither a port nor the resize handle was clicked
+    // if (!portClicked && !resizing) {
+    //     Q_EMIT nodeBodyClicked(_nodeId); // Trigger image loading flow
+    // }
+
+    // Preserve default behavior
+    QGraphicsObject::mousePressEvent(event);
+
+    // Emit selection signal if the node is selected
+    if (isSelected()) {
+        Q_EMIT nodeScene()->nodeSelected(_nodeId);
+    }
+}
+
+void NodeGraphicsObject::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
+{
+    // Deselect all other items after this one is selected.
+    // Unless we press a CTRL button to add the item to the selected group before
+    // starting moving.
+    if (!isSelected()) {
+        if (!event->modifiers().testFlag(Qt::ControlModifier))
+            scene()->clearSelection();
+
+        setSelected(true);
+    }
+
+    if (_nodeState.resizing()) {
+        auto diff = event->pos() - event->lastPos();
+
+        if (auto w = _graphModel.nodeData<QWidget *>(_nodeId, NodeRole::Widget)) {
+            prepareGeometryChange();
+
+            auto oldSize = w->size();
+
+            oldSize += QSize(diff.x(), diff.y());
+
+            w->resize(oldSize);
+
+            AbstractNodeGeometry &geometry = nodeScene()->nodeGeometry();
+
+            // Passes the new size to the model.
+            geometry.recomputeSize(_nodeId);
+
+            update();
+
+            moveConnections();
+
+            event->accept();
+        }
+    } else {
+        auto diff = event->pos() - event->lastPos();
+
+        nodeScene()->undoStack().push(new MoveNodeCommand(nodeScene(), diff));
+
+        event->accept();
+    }
+
+    QRectF r = nodeScene()->sceneRect();
+
+    r = r.united(mapToScene(boundingRect()).boundingRect());
+
+    nodeScene()->setSceneRect(r);
+}
+
+void NodeGraphicsObject::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
+{
+    _nodeState.setResizing(false);
+
+    QGraphicsObject::mouseReleaseEvent(event);
+
+    // position connections precisely after fast node move
+    moveConnections();
+
+    nodeScene()->nodeClicked(_nodeId);
+}
+
+void NodeGraphicsObject::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+    // bring all the colliding nodes to background
+    QList<QGraphicsItem *> overlapItems = collidingItems();
+
+    for (QGraphicsItem *item : overlapItems) {
+        if (item->zValue() > 0.0) {
+            item->setZValue(0.0);
+        }
+    }
+
+    // bring this node forward
+    setZValue(1.0);
+
+    _nodeState.setHovered(true);
+
+    update();
+
+    Q_EMIT nodeScene()->nodeHovered(_nodeId, event->screenPos());
+
+    event->accept();
+}
+
+void NodeGraphicsObject::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
+{
+    _nodeState.setHovered(false);
+
+    setZValue(0.0);
+
+    update();
+
+    Q_EMIT nodeScene()->nodeHoverLeft(_nodeId);
+
+    event->accept();
+}
+
+void NodeGraphicsObject::hoverMoveEvent(QGraphicsSceneHoverEvent *event)
+{
+    auto pos = event->pos();
+
+    //NodeGeometry geometry(_nodeId, _graphModel, nodeScene());
+    AbstractNodeGeometry &geometry = nodeScene()->nodeGeometry();
+
+    if ((_graphModel.nodeFlags(_nodeId) | NodeFlag::Resizable)
+        && geometry.resizeHandleRect(_nodeId).contains(QPoint(pos.x(), pos.y()))) {
+        setCursor(QCursor(Qt::SizeFDiagCursor));
+    } else {
+        setCursor(QCursor());
+    }
+
+    event->accept();
+}
+
+void NodeGraphicsObject::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event)
+{
+    QGraphicsItem::mouseDoubleClickEvent(event);
+
+    Q_EMIT nodeScene()->nodeDoubleClicked(_nodeId);
+}
+
+void NodeGraphicsObject::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
+{
+    // Create a context menu
+    QMenu menu;
+
+    // Add "Load Image" action to the menu
+    QAction *loadImageAction = menu.addAction("Load Image");
+
+    // Connect the "Load Image" action to a lambda function that emits the nodeBodyClicked signal
+    connect(loadImageAction, &QAction::triggered, [this]() {
+        Q_EMIT nodeBodyClicked(_nodeId); // Emit a signal to trigger image loading
+    });
+
+    // Emit the existing nodeContextMenu signal
+    Q_EMIT nodeScene()->nodeContextMenu(_nodeId, mapToScene(event->pos()));
+
+    // Show the context menu at the mouse position
+    menu.exec(event->screenPos());
+
+    // Accept the event to indicate it has been handled
+    event->accept();
+}
+} // namespace QtNodes
