@@ -1,4 +1,4 @@
-# Node-Based Image Editor
+# Node-Based Image Editor Using OpenCv, QT and CPP
 ![Screenshot](Images/i2.png)
 ![Screenshot](Images/i1.png)
 
