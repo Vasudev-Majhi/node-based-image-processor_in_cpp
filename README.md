@@ -1,7 +1,6 @@
 # Node-Based Image Editor
-![Screenshot](Images/Screenshot 2025-04-15 at 3.53.11 PM.png)
-
-![Screenshot](Images/Screenshot 2025-04-15 at 8.19.34 PM.png)
+![Screenshot](Images/i2.png)
+![Screenshot](Images/i1.png)
 
 ## ✨ Features
 
